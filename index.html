@@ -1,163 +1,164 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">  
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">  
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">  
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>HOST-Catering-Service</title>  
-<style>  
-    body {  
-        font-family: Arial, sans-serif;  
-        margin: 0;  
-        background-color: #f4f4f4;  
-        color: #333;  
-        scroll-behavior: smooth;  
-    }  
-    header {  
-        background-color: #002046;  
-        color: #fff;  
-        padding: 10px;  
-        text-align: center;  
-    }  * {  
-   -webkit-tap-highlight-color: transparent;  
-    outline: none !important;  
-}  
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOST-Catering-Service</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+    header {
+        background-color: #002046;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    } * {
+   -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+}
 
-*:focus {  
-  outline: none !important;  
-  box-shadow: none !important;  
-}  
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
-section {  
-    padding: 40px 20px;  
-}  
-h2 {  
-    color: #002046;  
-    margin-bottom: 20px;  
-    text-align: center;  
-}  
+section {
+    padding: 40px 20px;
+}
+h2 {
+    color: #002046;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-/* Card container */  
-.card-container {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
-    gap: 20px;  
-    justify-content: center;  
-    align-items: center;  
-}  
+/* Card container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
 
-/* Individual card */  
-.card {  
-    border: 1px solid #333;  
-    border-radius: 10px;  
-    padding: 20px;  
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  
-    background-color: #fff;  
-    transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s, max-height 0.6s ease-out;  
-    opacity: 0;  
-    transform: translateY(30px);  
-    max-height: 1000px; /* Default large height for animation */  
-}  
-.card.visible {  
-    opacity: 1;  
-    transform: translateY(0);  
-}  
-.card.hidden-card {  
-    opacity: 0;  
-    max-height: 0;  
-    overflow: hidden;  
-    padding: 0;  
-    border: none;  
-    margin-bottom: -20px; /* To collapse the gap */  
-}  
+/* Individual card */
+.card {
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s, max-height 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
+    max-height: 1000px; /* Default large height for animation */
+}
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card.hidden-card {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    margin-bottom: -20px; /* To collapse the gap */
+}
 
-.card p {  
-    margin: 8px 0;  
-}  
-.card strong {  
-    color: #002046;  
-}  
+.card p {
+    margin: 8px 0;
+}
+.card strong {
+    color: #002046;
+}
 
-/* Work cards are now clickable */  
-.card.work-card {  
-    cursor: pointer;  
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  
-}  
+/* Work cards are now clickable */
+.card.work-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Added hover effect for work cards */  
-.card.work-card:hover {  
-    transform: translateY(-5px);  
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);  
-}  
+/* Added hover effect for work cards */
+.card.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
-/* Hidden sections initially */  
-.hidden-section {  
-    display: none;  
-    max-height: 0;  
-    overflow: hidden;  
-    transition: max-height 0.5s ease;  
-}  
-.hidden-section.visible {  
-    display: block;  
-    max-height: 1000px; /* A value large enough to contain the content */  
-}  
+/* Hidden sections initially */
+.hidden-section {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+.hidden-section.visible {
+    display: block;
+    max-height: 1000px; /* A value large enough to contain the content */
+}
 
-/* Booking form */  
-form {  
-    max-width: 500px;  
-    margin: 0 auto;  
-    display: flex;  
-    flex-direction: column;  
-    gap: 15px;  
-}  
-input, textarea {  
-    padding: 10px;  
-    border: 1px solid #333;  
-    border-radius: 5px;  
-    width: 100%;  
-    box-sizing: border-box;  
-}  
-button.submit-btn, button.reset-btn {  
-    background-color: #002046;  
-    color: #fff;  
-    border: none;  
-    padding: 12px 24px;  
-    cursor: pointer;  
-    border-radius: 5px;  
-    font-size: 16px;  
-    transition: background-color 0.2s, transform 0.2s; /* Added transform for hover */  
-    margin-top: 10px;  
-}  
+/* Booking form */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+input, textarea {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+button.submit-btn, button.reset-btn {
+    background-color: #002046;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.2s, transform 0.2s; /* Added transform for hover */
+    margin-top: 10px;
+}
   
-/* Hover effect for buttons */  
-button.submit-btn:hover, button.reset-btn:hover {  
-    background-color: #001535;  
-    transform: translateY(-2px);  
-}  
+/* Hover effect for buttons */
+button.submit-btn:hover, button.reset-btn:hover {
+    background-color: #001535;
+    transform: translateY(-2px);
+}
 
-/* Added responsive media queries */  
-@media (max-width: 768px) {  
-    body {  
-        font-size: 16px;  
-    }  
-    header h1 {  
-        font-size: 24px;  
-    }  
-    section {  
-        padding: 20px 10px;  
-    }  
-    h2 {  
-        font-size: 22px;  
-    }  
-    .card-container {  
-        grid-template-columns: 1fr;  
-    }  
-    form {  
-        padding: 0 10px;  
-    }  
+/* Added responsive media queries */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    header h1 {
+        font-size: 24px;
+    }
+    section {
+        padding: 20px 10px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    form {
+        padding: 0 10px;
+    }
 }
 
       /* Footer */
@@ -187,133 +188,140 @@ button.submit-btn:hover, button.reset-btn:hover {
         color: #ffcc00;
     }
 
-</style>  
-</head>  
-<body>  <header>  
-    <h1>HOST Catering Service</h1>  
-</header>  <section id="work-details">  
-    <h2>Today Work Details</h2>  
-    <div class="card-container" id="work-container">  
-        <div class="card work-card" data-work-place="City A" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City A</p>  
-            <p><strong>Auditorium:</strong> Main Hall</p>  
-            <p><strong>Wage:</strong> ₹1000</p>  
-            <p><strong>Work Time:</strong> 4 hours</p>  
-        </div>  
-        <div class="card work-card" data-work-place="City B" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City B</p>  
-            <p><strong>Auditorium:</strong> Grand Hall</p>  
-            <p><strong>Wage:</strong> ₹1200</p>  
-            <p><strong>Work Time:</strong> 5 hours</p>  
-        </div>  
-        <div class="card work-card" data-work-place="City C" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City C</p>  
-            <p><strong>Auditorium:</strong> Small Hall</p>  
-            <p><strong>Wage:</strong> ₹900</p>  
-            <p><strong>Work Time:</strong> 3 hours</p>  
-        </div>  
-        <div class="card work-card" data-work-place="City D" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City D</p>  
-            <p><strong>Auditorium:</strong> Event Plaza</p>  
-            <p><strong>Wage:</strong> ₹1500</p>  
-            <p><strong>Work Time:</strong> 6 hours</p>  
-        </div>  
-    </div>  
-</section>  <section id="past-work-details">  
-    <h2>Past Work Details</h2>  
-    <div class="card-container" id="past-work-container">  
-        <div class="card work-card" data-work-place="City E" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City E</p>  
-            <p><strong>Auditorium:</strong> Convention Center</p>  
-            <p><strong>Wage:</strong> ₹1100</p>  
-            <p><strong>Work Time:</strong> 4.5 hours</p>  
-        </div>  
-        <div class="card work-card" data-work-place="City F" onclick="showDetails(this)">  
-            <p><strong>Place:</strong> City F</p>  
-            <p><strong>Auditorium:</strong> Banquet Hall</p>  
-            <p><strong>Wage:</strong> ₹950</p>  
-            <p><strong>Work Time:</strong> 3.5 hours</p>  
-        </div>  
-    </div>  
-</section>  <section id="back-button-section" style="text-align: center; display: none;">  
-    <button class="reset-btn" onclick="resetAll()">Go Back</button>  
-</section>  <section id="boys-details" class="hidden-section">  
-    <h2 id="boys-heading"></h2>  
-    <div class="card-container" id="boys-container">  
-        <div class="card" data-place="City A">  
-            <p><strong>Name:</strong> John</p>  
-            <p><strong>Phone:</strong> 9876543210</p>  
-            <p><strong>Place:</strong> City A</p>  
-            <p><strong>Age:</strong> 25</p>  
-        </div>  
-        <div class="card" data-place="City B">  
-            <p><strong>Name:</strong> Peter</p>  
-            <p><strong>Phone:</strong> 9876543211</p>  
-            <p><strong>Place:</strong> City B</p>  
-            <p><strong>Age:</strong> 28</p>  
-        </div>  
-        <div class="card" data-place="City C">  
-            <p><strong>Name:</strong> Rahul</p>  
-            <p><strong>Phone:</strong> 9876543214</p>  
-            <p><strong>Place:</strong> City C</p>  
-            <p><strong>Age:</strong> 23</p>  
-        </div>  
-        <div class="card" data-place="City E">  
-            <p><strong>Name:</strong> David</p>  
-            <p><strong>Phone:</strong> 9876543216</p>  
-            <p><strong>Place:</strong> City E</p>  
-            <p><strong>Age:</strong> 26</p>  
-        </div>  
-        <div class="card" data-place="City F">  
-            <p><strong>Name:</strong> Sam</p>  
-            <p><strong>Phone:</strong> 9876543217</p>  
-            <p><strong>Place:</strong> City F</p>  
-            <p><strong>Age:</strong> 24</p>  
-        </div>  
-    </div>  
-</section>  <section id="captains-details" class="hidden-section">  
-    <h2 id="captains-heading"></h2>  
-    <div class="card-container" id="captains-container">  
-        <div class="card" data-place="City A">  
-            <p><strong>Name:</strong> Alex</p>  
-            <p><strong>Age:</strong> 30</p>  
-            <p><strong>Place:</strong> City A</p>  
-            <p><strong>Phone:</strong> 9876543212</p>  
-        </div>  
-        <div class="card" data-place="City B">  
-            <p><strong>Name:</strong> Mike</p>  
-            <p><strong>Age:</strong> 32</p>  
-            <p><strong>Place:</strong> City B</p>  
-            <p><strong>Phone:</strong> 9876543213</p>  
-        </div>  
-        <div class="card" data-place="City C">  
-            <p><strong>Name:</strong> Sarah</p>  
-            <p><strong>Age:</strong> 29</p>  
-            <p><strong>Place:</strong> City C</p>  
-            <p><strong>Phone:</strong> 9876543215</p>  
-        </div>  
-        <div class="card" data-place="City E">  
-            <p><strong>Name:</strong> Mark</p>  
-            <p><strong>Age:</strong> 31</p>  
-            <p><strong>Place:</strong> City E</p>  
-            <p><strong>Phone:</strong> 9876543218</p>  
-        </div>  
-        <div class="card" data-place="City F">  
-            <p><strong>Name:</strong> Jane</p>  
-            <p><strong>Age:</strong> 27</p>  
-            <p><strong>Place:</strong> City F</p>  
-            <p><strong>Phone:</strong> 9876543219</p>  
-        </div>  
-    </div>  
-</section>  <section id="contact">  
-    <h2>Contact / Booking</h2>  
-    <form>  
-        <input type="text" placeholder="Your Name" required>  
-        <input type="tel" placeholder="Phone Number" required>  
-        <textarea placeholder="Event Details" required></textarea>  
-        <button type="submit" class="submit-btn">Book Now</button>  
-    </form>  
-</section>  
+</style>
+</head>
+<body>
+    <header>
+    <h1>HOST Catering Service</h1>
+</header>
+<section id="work-details">
+    <h2>Today Work Details</h2>
+    <div class="card-container" id="work-container">
+        <div class="card work-card" data-work-place="City A" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City A</p>
+            <p><strong>Auditorium:</strong> Main Hall</p>
+            <p><strong>Wage:</strong> ₹1000</p>
+            <p><strong>Work Time:</strong> 4 hours</p>
+        </div>
+        <div class="card work-card" data-work-place="City B" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City B</p>
+            <p><strong>Auditorium:</strong> Grand Hall</p>
+            <p><strong>Wage:</strong> ₹1200</p>
+            <p><strong>Work Time:</strong> 5 hours</p>
+        </div>
+        <div class="card work-card" data-work-place="City C" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City C</p>
+            <p><strong>Auditorium:</strong> Small Hall</p>
+            <p><strong>Wage:</strong> ₹900</p>
+            <p><strong>Work Time:</strong> 3 hours</p>
+        </div>
+        <div class="card work-card" data-work-place="City D" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City D</p>
+            <p><strong>Auditorium:</strong> Event Plaza</p>
+            <p><strong>Wage:</strong> ₹1500</p>
+            <p><strong>Work Time:</strong> 6 hours</p>
+        </div>
+    </div>
+</section>
+<section id="past-work-details">
+    <h2>Past Work Details</h2>
+    <div class="card-container" id="past-work-container">
+        <div class="card work-card" data-work-place="City E" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City E</p>
+            <p><strong>Auditorium:</strong> Convention Center</p>
+            <p><strong>Wage:</strong> ₹1100</p>
+            <p><strong>Work Time:</strong> 4.5 hours</p>
+        </div>
+        <div class="card work-card" data-work-place="City F" onclick="showDetails(this)">
+            <p><strong>Place:</strong> City F</p>
+            <p><strong>Auditorium:</strong> Banquet Hall</p>
+            <p><strong>Wage:</strong> ₹950</p>
+            <p><strong>Work Time:</strong> 3.5 hours</p>
+        </div>
+    </div>
+</section>
+<section id="back-button-section" style="text-align: center; display: none;">
+    <button class="reset-btn" onclick="resetAll()">Go Back</button>
+</section>
+<section id="boys-details" class="hidden-section">
+    <h2 id="boys-heading"></h2>
+    <div class="card-container" id="boys-container">
+        <div class="card" data-place="City A">
+            <p><strong>Name:</strong> John</p>
+            <p><strong>Phone:</strong> 9876543210</p>
+            <p><strong>Place:</strong> City A</p>
+            <p><strong>Age:</strong> 25</p>
+        </div>
+        <div class="card" data-place="City B">
+            <p><strong>Name:</strong> Peter</p>
+            <p><strong>Phone:</strong> 9876543211</p>
+            <p><strong>Place:</strong> City B</p>
+            <p><strong>Age:</strong> 28</p>
+        </div>
+        <div class="card" data-place="City C">
+            <p><strong>Name:</strong> Rahul</p>
+            <p><strong>Phone:</strong> 9876543214</p>
+            <p><strong>Place:</strong> City C</p>
+            <p><strong>Age:</strong> 23</p>
+        </div>
+        <div class="card" data-place="City E">
+            <p><strong>Name:</strong> David</p>
+            <p><strong>Phone:</strong> 9876543216</p>
+            <p><strong>Place:</strong> City E</p>
+            <p><strong>Age:</strong> 26</p>
+        </div>
+        <div class="card" data-place="City F">
+            <p><strong>Name:</strong> Sam</p>
+            <p><strong>Phone:</strong> 9876543217</p>
+            <p><strong>Place:</strong> City F</p>
+            <p><strong>Age:</strong> 24</p>
+        </div>
+    </div>
+</section>
+<section id="captains-details" class="hidden-section">
+    <h2 id="captains-heading"></h2>
+    <div class="card-container" id="captains-container">
+        <div class="card" data-place="City A">
+            <p><strong>Name:</strong> Alex</p>
+            <p><strong>Age:</strong> 30</p>
+            <p><strong>Place:</strong> City A</p>
+            <p><strong>Phone:</strong> 9876543212</p>
+        </div>
+        <div class="card" data-place="City B">
+            <p><strong>Name:</strong> Mike</p>
+            <p><strong>Age:</strong> 32</p>
+            <p><strong>Place:</strong> City B</p>
+            <p><strong>Phone:</strong> 9876543213</p>
+        </div>
+        <div class="card" data-place="City C">
+            <p><strong>Name:</strong> Sarah</p>
+            <p><strong>Age:</strong> 29</p>
+            <p><strong>Place:</strong> City C</p>
+            <p><strong>Phone:</strong> 9876543215</p>
+        </div>
+        <div class="card" data-place="City E">
+            <p><strong>Name:</strong> Mark</p>
+            <p><strong>Age:</strong> 31</p>
+            <p><strong>Place:</strong> City E</p>
+            <p><strong>Phone:</strong> 9876543218</p>
+        </div>
+        <div class="card" data-place="City F">
+            <p><strong>Name:</strong> Jane</p>
+            <p><strong>Age:</strong> 27</p>
+            <p><strong>Place:</strong> City F</p>
+            <p><strong>Phone:</strong> 9876543219</p>
+        </div>
+    </div>
+</section>
+<section id="contact">
+    <h2>Contact / Booking</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <textarea id="details" placeholder="Event Details" required></textarea>
+        <button type="submit" class="submit-btn">Book Now</button>
+    </form>
+</section>
     <footer>
     <p>© 2025 HOST Catering Service. All Rights Reserved.</p>
     <div class="social-icons">
@@ -323,99 +331,120 @@ button.submit-btn:hover, button.reset-btn:hover {
         <a href="https://wa.me/7561820814" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 </footer>
-<script>  
-    // Scroll animation for all cards  
-    const observer = new IntersectionObserver(entries => {  
-        entries.forEach(entry => {  
-            if(entry.isIntersecting){  
-                entry.target.classList.add('visible');  
-            }  
-        });  
-    }, { threshold: 0.1 });  
-  
-    document.querySelectorAll('.card').forEach(card => observer.observe(card));  
-  
-    // Function to show details based on work place  
-    function showDetails(clickedCard) {  
-        // Hide all other work cards in the same container  
-        const allWorkCards = clickedCard.parentNode.querySelectorAll('.work-card');  
-        allWorkCards.forEach(card => {  
-            if (card !== clickedCard) {  
-                card.classList.remove('visible');  
-                card.classList.add('hidden-card');  
-            }  
-        });  
-  
-        // Get the place from the clicked card's data attribute  
-        const place = clickedCard.getAttribute('data-work-place');  
-  
-        // Show the back button  
-        document.getElementById('back-button-section').style.display = 'block';  
-  
-        // Update headings to show which place's details are visible  
-        document.getElementById('boys-heading').textContent = `Boys Details for ${place}`;  
-        document.getElementById('captains-heading').textContent = `Captains Details for ${place}`;  
-  
-        // Get all cards in the boys and captains sections  
-        const boysCards = document.querySelectorAll('#boys-container .card');  
-        const captainsCards = document.querySelectorAll('#captains-container .card');  
-  
-        // Hide all cards first  
-        boysCards.forEach(card => card.classList.remove('visible'));  
-        captainsCards.forEach(card => card.classList.remove('visible'));  
-  
-        // Show boys details section  
-        const boysSection = document.getElementById('boys-details');  
-        boysSection.classList.add('visible');  
-  
-        // Show captains details section  
-        const captainsSection = document.getElementById('captains-details');  
-        captainsSection.classList.add('visible');  
-  
-        // Filter and show only the relevant cards based on the place  
-        boysCards.forEach(card => {  
-            if (card.getAttribute('data-place') === place) {  
-                card.classList.add('visible');  
-            }  
-        });  
-  
-        captainsCards.forEach(card => {  
-            if (card.getAttribute('data-place') === place) {  
-                card.classList.add('visible');  
-            }  
-        });  
-  
-        // Scroll to the revealed sections for better user experience  
-        setTimeout(() => {  
-            document.getElementById('boys-details').scrollIntoView({ behavior: 'smooth' });  
-        }, 600);  
+<script>
+    // Scroll animation for all cards
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+    // Function to show details based on work place
+    function showDetails(clickedCard) {
+        // Hide all other work cards in the same container
+        const allWorkCards = clickedCard.parentNode.querySelectorAll('.work-card');
+        allWorkCards.forEach(card => {
+            if (card !== clickedCard) {
+                card.classList.remove('visible');
+                card.classList.add('hidden-card');
+            }
+        });
+
+        // Get the place from the clicked card's data attribute
+        const place = clickedCard.getAttribute('data-work-place');
+
+        // Show the back button
+        document.getElementById('back-button-section').style.display = 'block';
+
+        // Update headings to show which place's details are visible
+        document.getElementById('boys-heading').textContent = `Boys Details for ${place}`;
+        document.getElementById('captains-heading').textContent = `Captains Details for ${place}`;
+
+        // Get all cards in the boys and captains sections
+        const boysCards = document.querySelectorAll('#boys-container .card');
+        const captainsCards = document.querySelectorAll('#captains-container .card');
+
+        // Hide all cards first
+        boysCards.forEach(card => card.classList.remove('visible'));
+        captainsCards.forEach(card => card.classList.remove('visible'));
+
+        // Show boys details section
+        const boysSection = document.getElementById('boys-details');
+        boysSection.classList.add('visible');
+
+        // Show captains details section
+        const captainsSection = document.getElementById('captains-details');
+        captainsSection.classList.add('visible');
+
+        // Filter and show only the relevant cards based on the place
+        boysCards.forEach(card => {
+            if (card.getAttribute('data-place') === place) {
+                card.classList.add('visible');
+            }
+        });
+
+        captainsCards.forEach(card => {
+            if (card.getAttribute('data-place') === place) {
+                card.classList.add('visible');
+            }
+        });
+
+        // Scroll to the revealed sections for better user experience
+        setTimeout(() => {
+            document.getElementById('boys-details').scrollIntoView({ behavior: 'smooth' });
+        }, 600);
           
-        // New code to center the clicked card on desktop  
-        if (window.innerWidth > 768) {  
-            clickedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });  
-        }  
-    }  
-  
-    // Function to reset the view to the initial state  
-    function resetAll() {  
-        // Show all work cards  
-        const allWorkCards = document.querySelectorAll('.work-card');  
-        allWorkCards.forEach(card => {  
-            card.classList.remove('hidden-card');  
-            card.classList.add('visible');  
-        });  
-  
-        // Hide boys and captains sections  
-        document.getElementById('boys-details').classList.remove('visible');  
-        document.getElementById('captains-details').classList.remove('visible');  
-  
-        // Hide the back button  
-        document.getElementById('back-button-section').style.display = 'none';  
-  
-        // Scroll back to the top of the work details section  
-        setTimeout(() => {  
-            document.getElementById('work-details').scrollIntoView({ behavior: 'smooth' });  
-        }, 300);  
-    }  
-</script>  </body>  
+        // New code to center the clicked card on desktop
+        if (window.innerWidth > 768) {
+            clickedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    // Function to reset the view to the initial state
+    function resetAll() {
+        // Show all work cards
+        const allWorkCards = document.querySelectorAll('.work-card');
+        allWorkCards.forEach(card => {
+            card.classList.remove('hidden-card');
+            card.classList.add('visible');
+        });
+
+        // Hide boys and captains sections
+        document.getElementById('boys-details').classList.remove('visible');
+        document.getElementById('captains-details').classList.remove('visible');
+
+        // Hide the back button
+        document.getElementById('back-button-section').style.display = 'none';
+
+        // Scroll back to the top of the work details section
+        setTimeout(() => {
+            document.getElementById('work-details').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // New JavaScript to handle the form submission and send email via mailto
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const details = document.getElementById('details').value;
+
+        // Create the email subject and body
+        const subject = `New Booking Request from ${name}`;
+        const body = `Name: ${name}\nPhone: ${phone}\n\nEvent Details:\n${details}`;
+
+        // Create the mailto link
+        const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the user's default email client
+        window.location.href = mailtoLink;
+    });
+</script>
+</body>
 </html>
+
