@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">                                
+  <link rel="icon" type="image/x-icon" href="https://hostcateringevents.github.io/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hostcateringevents.github.io/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://hostcateringevents.github.io/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="https://hostcateringevents.github.io/icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCS</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+    header {
+        background-color: #002046;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    * {
+       -webkit-tap-highlight-color: transparent;
+        outline: none !important;
+    }
+
+    *:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    /* --- New Welcome Section Styling --- */
+    #welcome {
+        /* UPDATED: New background image and overlay for the welcome section */
+        background: linear-gradient(rgba(0, 32, 70, 0.7), rgba(0, 32, 70, 0.7)), url('https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;
+        color: #fff;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    #welcome h1 { /* Added style for the main welcome heading */
+        color: #ffcc00;
+        font-size: 40px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    #welcome h2 {
+    font-size: 2.0em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #ffcc00;
+  }
+
+  #welcome p {
+    font-size: 1.0em;
+    line-height: 1.5;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+  }
+
+    /* Styles for the new welcome buttons */
+    .welcome-button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .welcome-button {
+        background-color: #ffcc00;
+        color: #002046;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.2s, transform 0.2s;
+        text-decoration: none; /* In case it's an anchor */
+        text-align: center;
+    }
+    .welcome-button:hover {
+        background-color: #e6b800;
+        transform: translateY(-2px);
+    }
+    .welcome-button.secondary {
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    .welcome-button.secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: #ffcc00;
+        color: #ffcc00;
+        transform: translateY(-2px);
+    }
+
+
+    /* --- General Section Styling --- */
+    section {
+        padding: 40px 20px;
+    }
+    h2 {
+        color: #002046;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Card container */
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Individual card */
+    .card {
+        border: 1px solid #333;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s, max-height 0.6s ease-out;
+        opacity: 0;
+        transform: translateY(30px);
+        max-height: 1000px; /* Default large height for animation */
+    }
+    .card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .card.hidden-card {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        border: none;
+        margin-bottom: -20px; /* To collapse the gap */
+    }
+
+    .card p {
+        margin: 8px 0;
+    }
+    .card strong {
+        color: #002046;
+    }
+
+    /* Work cards are now clickable */
+    .card.work-card {
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Added hover effect for work cards */
+    .card.work-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Hidden sections initially */
+    .hidden-section {
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    .hidden-section.visible {
+        display: block;
+        max-height: 2000px; /* Increased max-height for content */
+    }
+
+    /* --- Form Styling (Booking & Register) --- */
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    input, textarea, select {
+        padding: 10px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    label {
+        font-weight: bold;
+        color: #002046;
+    }
+    button.submit-btn, button.reset-btn, button.register-btn {
+        background-color: #002046;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.2s, transform 0.2s;
+        margin-top: 10px;
+    }
+
+    /* Hover effect for buttons */
+    button.submit-btn:hover, button.reset-btn:hover, button.register-btn:hover {
+        background-color: #001535;
+        transform: translateY(-2px);
+    }
+
+    /* Added responsive media queries */
+    @media (max-width: 768px) {
+        body {
+            font-size: 16px;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        #welcome h1 {
+             font-size: 30px;
+        }
+        section {
+            padding: 20px 10px;
+        }
+        h2 {
+            font-size: 22px;
+        }
+        .card-container {
+            grid-template-columns: 1fr;
+        }
+        form {
+            padding: 15px;
+        }
+    }
+
+      /* Footer */
+    footer {
+        background-color: #002046;
+        color: #fff;
+        text-align: center;
+        padding: 15px 5px;
+        margin-top: 40px;
+    }
+    footer p {
+        font-family: Oswald;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+    .social-icons {
+        margin-top: 10px;
+    }
+    .social-icons a {
+        margin: 0 10px;
+        display: inline-block;
+        color: #fff;
+        font-size: 18px;
+        transition: color 0.3s;
+        text-decoration: none;
+    }
+    .social-icons a:hover {
+        color: #ffcc00;
+    }
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Host Catering Service</h1>
+    </header>
+
+    <section id="welcome">
+        <h2>Welcome to Host Catering Service (HCS)</h2>
+        <p>
+           We are Kerala's trusted catering and event staffing partner. From skilled staff to full-service event management,
+           HCS ensures every occasion runs seamlessly. Whether you're hiring or joining our talented team, excellence is our standard.
+        </p>
+        <div class="welcome-button-container">
+            <a href="#boys-register" class="welcome-button" onclick="scrollToRegister()">Join Our Team</a>
+            <a href="#booking" class="welcome-button secondary" onclick="scrollToBooking()">Book Your Event</a>
+        </div>
+    </section>
+
+    <section id="work-details">
+        <h2>Today Work Details</h2>
+        <div class="card-container" id="work-container">
+            <div class="card work-card" data-work-place="City A" onclick="showDetails(this)">
+                <p><strong>Place:</strong> Malappuram</p>
+                <p><strong>Auditorium:</strong> Main Hall</p>
+                <p><strong>Wage:</strong> ₹450</p>
+                <p><strong>Work Time:</strong> 4 hours</p>
+            </div>
+            <div class="card work-card" data-work-place="City B" onclick="showDetails(this)">
+                <p><strong>Place:</strong> Kozhikode</p>
+                <p><strong>Auditorium:</strong> Grand Hall</p>
+                <p><strong>Wage:</strong> ₹450</p>
+                <p><strong>Work Time:</strong> 5 hours</p>
+            </div>
+            <div class="card work-card" data-work-place="City C" onclick="showDetails(this)">
+                <p><strong>Place:</strong> Kasaragod</p>
+                <p><strong>Auditorium:</strong> Small Hall</p>
+                <p><strong>Wage:</strong> ₹450</p>
+                <p><strong>Work Time:</strong> 3 hours</p>
+            </div>
+            <div class="card work-card" data-work-place="City D" onclick="showDetails(this)">
+                <p><strong>Place:</strong> Palakkad</p>
+                <p><strong>Auditorium:</strong> Event Plaza</p>
+                <p><strong>Wage:</strong> ₹430</p>
+                <p><strong>Work Time:</strong> 6 hours</p>
+            </div>
+        </div>
+    </section>
+    <section id="past-work-details">
+        <h2>Past Work Details</h2>
+        <div class="card-container" id="past-work-container">
+            <div class="card work-card" data-work-place="City E" onclick="showDetails(this)">
+                <p><strong>Place:</strong> City E</p>
+                <p><strong>Auditorium:</strong> Convention Center</p>
+                <p><strong>Wage:</strong> ₹450</p>
+                <p><strong>Work Time:</strong> 4.5 hours</p>
+            </div>
+            <div class="card work-card" data-work-place="City F" onclick="showDetails(this)">
+                <p><strong>Place:</strong> Thrissur</p>
+                <p><strong>Auditorium:</strong> Banquet Hall</p>
+                <p><strong>Wage:</strong> ₹550</p>
+                <p><strong>Work Time:</strong> 3.5 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="back-button-section" style="text-align: center; display: none;">
+        <button class="reset-btn" onclick="resetAll()">Go Back to Work Listings</button>
+    </section>
+
+    <section id="assigned-staff-details" class="hidden-section">
+        <h2 id="assigned-heading">Assigned Staff Details</h2>
+        <div class="card-container" id="staff-container">
+            </div>
+    </section>
+
+    <section id="boys-register">
+        <h2>New Staff Registration (Boys/Captains)</h2>
+        <form id="registrationForm">
+            <label for="reg-name">Full Name:</label>
+            <input type="text" id="reg-name" placeholder="your full name" required>
+
+            <label for="reg-dob">Date of Birth:</label>
+            <input type="date" id="reg-dob" required>
+
+            <label for="reg-phone">Phone Number:</label>
+            <input type="tel" id="reg-phone" placeholder="Phone number (WhatsApp Preferred" required>
+
+            <label for="reg-experience">Years of Experience:</label>
+            <input type="number" id="reg-experience" min="0" placeholder="e.g. 5" required>
+
+            <label for="reg-role">Role:</label>
+            <select id="reg-role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="Boy">Boy (Service Crew)</option>
+                <option value="Captain">Captain (Supervisor)</option>
+            </select>
+
+            <label for="reg-place">Home City/Place:</label>
+            <input type="text" id="reg-place" placeholder="e.g. Malappuram/Kottakkal" required>
+
+            <button type="submit" class="register-btn">Register Staff Member</button>
+        </form>
+    </section>
+
+    <section id="booking">
+        <h2>Contact / Booking</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <textarea id="details" placeholder="Event Details" required></textarea>
+            <button type="submit" class="submit-btn">Book Now</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://chat.whatsapp.com/BU7Sky5DVz8HminNybUboN" target="_blank"><i class="fab fa-whatsapp"></i> join whatsapp</a>
+        </div>
+        <p><strong>© 2025 Host Catering Service and Events.<br>All Rights Reserved.</strong></p>
+    </footer>
+
+    <div id="hidden-staff-data" style="display:none;">
+        <div class="card staff-card" data-staff-type="Boy" data-place="City A">
+            <p><strong>Name:</strong> John</p>
+            <p><strong>Phone:</strong> 9876543210</p>
+            <p><strong>Place:</strong> City A (Malappuram)</p>
+            <p><strong>Age:</strong> 25</p>
+            <p><strong>D.O.B:</strong> 15/05/2000</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City A">
+            <p><strong>Name:</strong> Alex (Captain)</p>
+            <p><strong>Phone:</strong> 9876543212</p>
+            <p><strong>Place:</strong> City A (Malappuram)</p>
+            <p><strong>Age:</strong> 30</p>
+            <p><strong>D.O.B:</strong> 20/12/1994</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Boy" data-place="City B">
+            <p><strong>Name:</strong> Peter</p>
+            <p><strong>Phone:</strong> 9876543211</p>
+            <p><strong>Place:</strong> City B (Kozhikode)</p>
+            <p><strong>Age:</strong> 28</p>
+            <p><strong>D.O.B:</strong> 01/08/1997</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City B">
+            <p><strong>Name:</strong> Mike (Captain)</p>
+            <p><strong>Phone:</strong> 9876543213</p>
+            <p><strong>Place:</strong> City B (Kozhikode)</p>
+            <p><strong>Age:</strong> 32</p>
+            <p><strong>D.O.B:</strong> 10/03/1993</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Boy" data-place="City C">
+            <p><strong>Name:</strong> Rahul</p>
+            <p><strong>Phone:</strong> 9876543214</p>
+            <p><strong>Place:</strong> City C (Kasaragod)</p>
+            <p><strong>Age:</strong> 23</p>
+            <p><strong>D.O.B:</strong> 25/11/2002</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City C">
+            <p><strong>Name:</strong> Sarah (Captain)</p>
+            <p><strong>Phone:</strong> 9876543215</p>
+            <p><strong>Place:</strong> City C (Kasaragod)</p>
+            <p><strong>Age:</strong> 29</p>
+            <p><strong>D.O.B:</strong> 05/01/1996</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Boy" data-place="City D">
+            <p><strong>Name:</strong> Ben</p>
+            <p><strong>Phone:</strong> 9876543220</p>
+            <p><strong>Place:</strong> City D (Palakkad)</p>
+            <p><strong>Age:</strong> 27</p>
+            <p><strong>D.O.B:</strong> 12/07/1998</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City D">
+            <p><strong>Name:</strong> Tom (Captain)</p>
+            <p><strong>Phone:</strong> 9876543221</p>
+            <p><strong>Place:</strong> City D (Palakkad)</p>
+            <p><strong>Age:</strong> 34</p>
+            <p><strong>D.O.B:</strong> 18/09/1991</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Boy" data-place="City E">
+            <p><strong>Name:</strong> David</p>
+            <p><strong>Phone:</strong> 9876543216</p>
+            <p><strong>Place:</strong> City E</p>
+            <p><strong>Age:</strong> 26</p>
+            <p><strong>D.O.B:</strong> 03/04/1999</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City E">
+            <p><strong>Name:</strong> Mark (Captain)</p>
+            <p><strong>Phone:</strong> 9876543218</p>
+            <p><strong>Place:</strong> City E</p>
+            <p><strong>Age:</strong> 31</p>
+            <p><strong>D.O.B:</strong> 22/02/1994</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Boy" data-place="City F">
+            <p><strong>Name:</strong> Sam</p>
+            <p><strong>Phone:</strong> 9876543217</p>
+            <p><strong>Place:</strong> City F (Thrissur)</p>
+            <p><strong>Age:</strong> 24</p>
+            <p><strong>D.O.B:</strong> 14/10/2001</p>
+        </div>
+        <div class="card staff-card" data-staff-type="Captain" data-place="City F">
+            <p><strong>Name:</strong> Jane (Captain)</p>
+            <p><strong>Phone:</strong> 9876543219</p>
+            <p><strong>Place:</strong> City F (Thrissur)</p>
+            <p><strong>Age:</strong> 27</p>
+            <p><strong>D.O.B:</strong> 29/06/1998</p>
+        </div>
+    </div>
+<script>
+    // Scroll animation for all cards
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+    // Get all hidden staff data cards
+    const allStaffCards = document.querySelectorAll('#hidden-staff-data .staff-card');
+    const staffContainer = document.getElementById('staff-container');
+    const assignedStaffSection = document.getElementById('assigned-staff-details');
+
+
+    // Function to show details based on work place
+    function showDetails(clickedCard) {
+        // Hide all other work cards
+        const allWorkCards = document.querySelectorAll('.work-card');
+        allWorkCards.forEach(card => {
+            if (card !== clickedCard) {
+                card.classList.remove('visible');
+                card.classList.add('hidden-card');
+            }
+        });
+
+        // Get the place from the clicked card's data attribute and its city name
+        const place = clickedCard.getAttribute('data-work-place');
+        const cityElement = clickedCard.querySelector('p:first-child strong').parentNode;
+        const placeName = cityElement.textContent.replace('Place: ', '').trim();
+
+        // Show the back button
+        document.getElementById('back-button-section').style.display = 'block';
+
+        // Clear previous details
+        staffContainer.innerHTML = '';
+
+        // Update heading to show which place's details are visible
+        document.getElementById('assigned-heading').textContent = `Assigned Staff for ${placeName}`;
+
+        // Show assigned staff section
+        assignedStaffSection.classList.add('visible');
+
+        // Filter and show only the relevant cards based on the place
+        allStaffCards.forEach(staffCard => {
+            if (staffCard.getAttribute('data-place') === place) {
+                // Clone the card for display
+                const clonedCard = staffCard.cloneNode(true);
+                clonedCard.classList.remove('staff-card'); // Remove original data class
+
+                // Add the role to the card for clarity
+                const role = staffCard.getAttribute('data-staff-type');
+                const roleParagraph = document.createElement('p');
+                roleParagraph.innerHTML = `<strong>Role:</strong> ${role}`;
+                clonedCard.appendChild(roleParagraph);
+
+                // Ensure it has the 'visible' class
+                setTimeout(() => {
+                    clonedCard.classList.add('visible');
+                    observer.observe(clonedCard); // Re-observe the new card for animation
+                }, 100);
+
+                staffContainer.appendChild(clonedCard);
+            }
+        });
+
+        // Scroll to the revealed sections for better user experience
+        setTimeout(() => {
+            assignedStaffSection.scrollIntoView({ behavior: 'smooth' });
+        }, 600);
+
+        // Center the clicked card on desktop
+        if (window.innerWidth > 768) {
+            clickedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    // Function to reset the view to the initial state
+    function resetAll() {
+        // Show all work cards
+        const allWorkCards = document.querySelectorAll('.work-card');
+        allWorkCards.forEach(card => {
+            card.classList.remove('hidden-card');
+            card.classList.add('visible');
+        });
+
+        // Hide assigned staff section
+        assignedStaffSection.classList.remove('visible');
+        staffContainer.innerHTML = ''; // Clear staff cards
+
+        // Hide the back button
+        document.getElementById('back-button-section').style.display = 'none';
+
+        // Scroll back to the top of the work details section
+        setTimeout(() => {
+            document.getElementById('work-details').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    }
+
+    // NEW: Function to scroll to the staff registration section
+    function scrollToRegister() {
+        document.getElementById('boys-register').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // NEW: Function to scroll to the booking section
+    function scrollToBooking() {
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+    // Contact/Booking Form: Sends email via mailto
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const details = document.getElementById('details').value;
+
+        // Create the email subject and body
+        const subject = `New Booking Request from ${name}`;
+        const body = `Name: ${name}\nPhone: ${phone}\n\nEvent Details:\n${details}`;
+
+        // Create the mailto link
+        const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the user's default email client
+        window.location.href = mailtoLink;
+        // Optionally, you might want to alert the user here too, but the original did not.
+    });
+
+    // Staff Registration Form: NOW Sends email via mailto instead of showing an alert
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get values from the form
+        const name = document.getElementById('reg-name').value;
+        const dob = document.getElementById('reg-dob').value;
+        const phone = document.getElementById('reg-phone').value;
+        const experience = document.getElementById('reg-experience').value;
+        const role = document.getElementById('reg-role').value;
+        const place = document.getElementById('reg-place').value;
+
+        // Create the email subject and body
+        const subject = `New Staff Registration: ${name} (${role})`;
+        const body = `A new staff has registered
+
+--- REGISTRATION DETAILS ---
+Full Name: ${name}
+Role: ${role}
+Date of Birth: ${dob}
+Years of Experience: ${experience}
+Phone Number: ${phone}
+Home City/Place: ${place}
+---------------------------
+`;
+
+        // Create the mailto link
+        const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the user's default email client
+        window.location.href = mailtoLink;
+
+        // Inform the user and reset the form
+        alert(`Registration email prepared! Please click 'Send' in your email application to complete the process for ${name}.`);
+        this.reset();
+    });
+</script>
+</body>
+</html>
