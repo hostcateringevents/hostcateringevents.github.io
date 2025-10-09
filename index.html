@@ -2,57 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="manifest" href="icons/site.webmanifest">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HCSE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCSE - Host Catering Service & Events</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="icons/site.webmanifest">
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f4f4f4;
-        color: #333;
-        scroll-behavior: smooth;
-    }
-    header {
-        background-color: #002046;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    } * {
-   -webkit-tap-highlight-color: transparent;
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
     outline: none !important;
-}
+  }
 
-*:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
+  *:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 
-section {
+  header {
+    background-color: #002046;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* --- PROFESSIONAL Welcome Section Styling --- */
+  #welcome-section {
+    position: relative;
+    background: linear-gradient(135deg, #001c40 0%, #003f91 100%);
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    overflow: hidden;
+  }
+
+  #welcome-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  .welcome-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #welcome-section h2 {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #ffcc00;
+  }
+
+  #welcome-section p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+  }
+
+  .welcome-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .primary-btn {
+    background-color: #ffcc00;
+    color: #002046;
+    font-weight: bold;
+  }
+
+  .primary-btn:hover {
+    background-color: #ffd633;
+    transform: translateY(-3px);
+  }
+
+  .secondary-btn {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+  }
+
+  .secondary-btn:hover {
+    background-color: #fff;
+    color: #002046;
+    transform: translateY(-3px);
+  }
+
+  /* General Sections */
+  section {
     padding: 40px 20px;
-}
-h2 {
+  }
+
+  h2 {
     color: #002046;
     margin-bottom: 20px;
     text-align: center;
-}
+  }
 
-/* Card container */
-.card-container {
+  /* Card container */
+  .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     justify-content: center;
     align-items: center;
-}
+  }
 
-/* Individual card */
-.card {
+  /* Individual card */
+  .card {
     border: 1px solid #333;
     border-radius: 10px;
     padding: 20px;
@@ -61,68 +151,75 @@ h2 {
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s, max-height 0.6s ease-out;
     opacity: 0;
     transform: translateY(30px);
-    max-height: 1000px; /* Default large height for animation */
-}
-.card.visible {
+  }
+
+  .card.visible {
     opacity: 1;
     transform: translateY(0);
-}
-.card.hidden-card {
+  }
+
+  .card.hidden-card {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     padding: 0;
     border: none;
-    margin-bottom: -20px; /* To collapse the gap */
-}
+    margin-bottom: -20px;
+  }
 
-.card p {
-    margin: 8px 0;
-}
-.card strong {
-    color: #002046;
-}
-
-/* Work cards are now clickable */
-.card.work-card {
+  .card.work-card {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  }
 
-/* Added hover effect for work cards */
-.card.work-card:hover {
+  .card.work-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-}
+  }
 
-/* Hidden sections initially */
-.hidden-section {
+  /* Hidden sections initially */
+  .hidden-section {
     display: none;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
-}
-.hidden-section.visible {
-    display: block;
-    max-height: 1000px; /* A value large enough to contain the content */
-}
+  }
 
-/* Booking form */
-form {
+  .hidden-section.visible {
+    display: block;
+    max-height: 1000px;
+  }
+
+  /* Forms */
+  form {
     max-width: 500px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-input, textarea {
+  }
+
+  input, textarea {
     padding: 10px;
     border: 1px solid #333;
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
-}
-button.submit-btn, button.reset-btn {
+  }
+
+  #dob-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #dob-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #002046;
+    font-weight: bold;
+  }
+
+  button.submit-btn, button.reset-btn, button.register-btn {
     background-color: #002046;
     color: #fff;
     border: none;
@@ -130,320 +227,174 @@ button.submit-btn, button.reset-btn {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
-    transition: background-color 0.2s, transform 0.2s; /* Added transform for hover */
+    transition: background-color 0.2s, transform 0.2s;
     margin-top: 10px;
-}
-  
-/* Hover effect for buttons */
-button.submit-btn:hover, button.reset-btn:hover {
+  }
+
+  button.submit-btn:hover, button.reset-btn:hover, button.register-btn:hover {
     background-color: #001535;
     transform: translateY(-2px);
-}
+  }
 
-/* Added responsive media queries */
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
+  button.register-btn {
+    background-color: #3b5998;
+  }
+
+  button.register-btn:hover {
+    background-color: #2d4373;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #001c40;
+    color: #fff;
+    text-align: center;
+    padding: 15px 5px;
+    margin-top: 40px;
+  }
+
+  footer p {
+    font-family: Oswald, sans-serif;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: #ffcc00;
+  }
+
+  @media (max-width: 768px) {
+    #welcome-section {
+      padding: 70px 15px;
     }
-    header h1 {
-        font-size: 24px;
+    #welcome-section h2 {
+      font-size: 2em;
     }
-    section {
-        padding: 20px 10px;
-    }
-    h2 {
-        font-size: 22px;
+    #welcome-section p {
+      font-size: 1em;
     }
     .card-container {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
     }
-    form {
-        padding: 0 10px;
-    }
-}
-
-      /* Footer */
-    footer {
-        background-color: #002046;
-        color: #fff;
-        text-align: center;
-        padding: 15px 5px;
-        margin-top: 40px;
-    }
-    footer p {
-        font-family: Oswald;
-        margin: 8px 0;
-        font-size: 14px;
-    }
-    .social-icons {
-        margin-top: 10px;
-    }
-    .social-icons a {
-        margin: 0 10px;
-        display: inline-block;
-        color: #fff;
-        font-size: 18px;
-        transition: color 0.3s;
-        text-decoration: none;
-    }
-    .social-icons a:hover {
-        color: #ffcc00;
-    }
-
+  }
 </style>
 </head>
+
 <body>
-    <header>
-    <h1>Host Catering Service</h1>
-</header>
+<header>Host Catering Service & Events</header>
+
+<section id="welcome-section">
+  <div class="welcome-content">
+    <h2>Welcome to Host Catering Service & Events (HCSE)</h2>
+    <p>
+      We are Kerala’s trusted catering and event staffing partner. From skilled staff to full-service event management,
+      HCSE ensures every occasion runs seamlessly. Whether you’re hiring or joining our talented team, excellence is our standard.
+    </p>
+    <div class="welcome-buttons">
+      <a href="#boys-register" class="btn primary-btn">Join Our Team</a>
+      <a href="#contact" class="btn secondary-btn">Book Your Event</a>
+    </div>
+  </div>
+</section>
+
 <section id="work-details">
-    <h2>Today Work Details</h2>
-    <div class="card-container" id="work-container">
-        <div class="card work-card" data-work-place="City A" onclick="showDetails(this)">
-            <p><strong>Place:</strong> Malappuram</p>
-            <p><strong>Auditorium:</strong> Main Hall</p>
-            <p><strong>Wage:</strong> ₹450</p>
-            <p><strong>Work Time:</strong> 4 hours</p>
-        </div>
-        <div class="card work-card" data-work-place="City B" onclick="showDetails(this)">
-            <p><strong>Place:</strong> Kozhikode</p>
-            <p><strong>Auditorium:</strong> Grand Hall</p>
-            <p><strong>Wage:</strong> ₹450</p>
-            <p><strong>Work Time:</strong> 5 hours</p>
-        </div>
-        <div class="card work-card" data-work-place="City C" onclick="showDetails(this)">
-            <p><strong>Place:</strong> Kasaragod</p>
-            <p><strong>Auditorium:</strong> Small Hall</p>
-            <p><strong>Wage:</strong> ₹450</p>
-            <p><strong>Work Time:</strong> 3 hours</p>
-        </div>
-        <div class="card work-card" data-work-place="City D" onclick="showDetails(this)">
-            <p><strong>Place:</strong> Palakkad</p>
-            <p><strong>Auditorium:</strong> Event Plaza</p>
-            <p><strong>Wage:</strong> ₹430</p>
-            <p><strong>Work Time:</strong> 6 hours</p>
-        </div>
+  <h2>Today Work Details</h2>
+  <div class="card-container" id="work-container">
+    <div class="card work-card" data-work-place="City A" onclick="showDetails(this)">
+      <p><strong>Place:</strong> Malappuram</p>
+      <p><strong>Auditorium:</strong> Main Hall</p>
+      <p><strong>Wage:</strong> ₹450</p>
+      <p><strong>Work Time:</strong> 4 hours</p>
     </div>
-</section>
-<section id="past-work-details">
-    <h2>Past Work Details</h2>
-    <div class="card-container" id="past-work-container">
-        <div class="card work-card" data-work-place="City E" onclick="showDetails(this)">
-            <p><strong>Place:</strong> City E</p>
-            <p><strong>Auditorium:</strong> Convention Center</p>
-            <p><strong>Wage:</strong> ₹450</p>
-            <p><strong>Work Time:</strong> 4.5 hours</p>
-        </div>
-        <div class="card work-card" data-work-place="City F" onclick="showDetails(this)">
-            <p><strong>Place:</strong> Thrissur</p>
-            <p><strong>Auditorium:</strong> Banquet Hall</p>
-            <p><strong>Wage:</strong> ₹550</p>
-            <p><strong>Work Time:</strong> 3.5 hours</p>
-        </div>
+    <div class="card work-card" data-work-place="City B" onclick="showDetails(this)">
+      <p><strong>Place:</strong> Kozhikode</p>
+      <p><strong>Auditorium:</strong> Grand Hall</p>
+      <p><strong>Wage:</strong> ₹450</p>
+      <p><strong>Work Time:</strong> 5 hours</p>
     </div>
+  </div>
 </section>
-<section id="back-button-section" style="text-align: center; display: none;">
-    <button class="reset-btn" onclick="resetAll()">Go Back</button>
-</section>
-<section id="boys-details" class="hidden-section">
-    <h2 id="boys-heading"></h2>
-    <div class="card-container" id="boys-container">
-        <div class="card" data-place="City A">
-            <p><strong>Name:</strong> John</p>
-            <p><strong>Phone:</strong> 9876543210</p>
-            <p><strong>Place:</strong> City A</p>
-            <p><strong>Age:</strong> 25</p>
-        </div>
-        <div class="card" data-place="City B">
-            <p><strong>Name:</strong> Peter</p>
-            <p><strong>Phone:</strong> 9876543211</p>
-            <p><strong>Place:</strong> City B</p>
-            <p><strong>Age:</strong> 28</p>
-        </div>
-        <div class="card" data-place="City C">
-            <p><strong>Name:</strong> Rahul</p>
-            <p><strong>Phone:</strong> 9876543214</p>
-            <p><strong>Place:</strong> City C</p>
-            <p><strong>Age:</strong> 23</p>
-        </div>
-        <div class="card" data-place="City E">
-            <p><strong>Name:</strong> David</p>
-            <p><strong>Phone:</strong> 9876543216</p>
-            <p><strong>Place:</strong> City E</p>
-            <p><strong>Age:</strong> 26</p>
-        </div>
-        <div class="card" data-place="City F">
-            <p><strong>Name:</strong> Sam</p>
-            <p><strong>Phone:</strong> 9876543217</p>
-            <p><strong>Place:</strong> City F</p>
-            <p><strong>Age:</strong> 24</p>
-        </div>
+
+<section id="boys-register">
+  <h2>Join Our Team (Staff Registration) 🧑‍🍳</h2>
+  <form id="registerForm">
+    <input type="text" id="reg-name" placeholder="Your Full Name" required>
+    <input type="tel" id="reg-phone" placeholder="Phone Number (WhatsApp Preferred)" required>
+    <div id="dob-group">
+      <label for="reg-dob">Date of Birth</label>
+      <input type="date" id="reg-dob" required>
     </div>
+    <input type="text" id="reg-city" placeholder="Your City/District" required>
+    <textarea id="reg-experience" placeholder="Describe your catering experience and role (Boy/Captain)" required></textarea>
+    <button type="submit" class="register-btn">Register Now</button>
+  </form>
 </section>
-<section id="captains-details" class="hidden-section">
-    <h2 id="captains-heading"></h2>
-    <div class="card-container" id="captains-container">
-        <div class="card" data-place="City A">
-            <p><strong>Name:</strong> Alex</p>
-            <p><strong>Age:</strong> 30</p>
-            <p><strong>Place:</strong> City A</p>
-            <p><strong>Phone:</strong> 9876543212</p>
-        </div>
-        <div class="card" data-place="City B">
-            <p><strong>Name:</strong> Mike</p>
-            <p><strong>Age:</strong> 32</p>
-            <p><strong>Place:</strong> City B</p>
-            <p><strong>Phone:</strong> 9876543213</p>
-        </div>
-        <div class="card" data-place="City C">
-            <p><strong>Name:</strong> Sarah</p>
-            <p><strong>Age:</strong> 29</p>
-            <p><strong>Place:</strong> City C</p>
-            <p><strong>Phone:</strong> 9876543215</p>
-        </div>
-        <div class="card" data-place="City E">
-            <p><strong>Name:</strong> Mark</p>
-            <p><strong>Age:</strong> 31</p>
-            <p><strong>Place:</strong> City E</p>
-            <p><strong>Phone:</strong> 9876543218</p>
-        </div>
-        <div class="card" data-place="City F">
-            <p><strong>Name:</strong> Jane</p>
-            <p><strong>Age:</strong> 27</p>
-            <p><strong>Place:</strong> City F</p>
-            <p><strong>Phone:</strong> 9876543219</p>
-        </div>
-    </div>
-</section>
+
 <section id="contact">
-    <h2>Contact / Booking</h2>
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="tel" id="phone" placeholder="Phone Number" required>
-        <textarea id="details" placeholder="Event Details" required></textarea>
-        <button type="submit" class="submit-btn">Book Now</button>
-    </form>
+  <h2>Contact / Booking</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <textarea id="details" placeholder="Event Details" required></textarea>
+    <button type="submit" class="submit-btn">Book Now</button>
+  </form>
 </section>
-    <footer>
-        <div class="social-icons">
-            <a href="https://chat.whatsapp.com/BU7Sky5DVz8HminNybUboN" target="_blank"><i class="fab fa-whatsapp"></i> join whatsapp</a>
-        </div>
-    <p><strong>© 2025 Host Catering Service and Events.<br>All Rights Reserved.</strong></p>
+
+<footer>
+  <div class="social-icons">
+    <a href="https://chat.whatsapp.com/BU7Sky5DVz8HminNybUboN" target="_blank"><i class="fab fa-whatsapp"></i> Join WhatsApp</a>
+  </div>
+  <p><strong>© 2025 Host Catering Service and Events.<br>All Rights Reserved.</strong></p>
 </footer>
+
 <script>
-    // Scroll animation for all cards
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.card').forEach(card => observer.observe(card));
-
-    // Function to show details based on work place
-    function showDetails(clickedCard) {
-        // Hide all other work cards in the same container
-        const allWorkCards = clickedCard.parentNode.querySelectorAll('.work-card');
-        allWorkCards.forEach(card => {
-            if (card !== clickedCard) {
-                card.classList.remove('visible');
-                card.classList.add('hidden-card');
-            }
-        });
-
-        // Get the place from the clicked card's data attribute
-        const place = clickedCard.getAttribute('data-work-place');
-
-        // Show the back button
-        document.getElementById('back-button-section').style.display = 'block';
-
-        // Update headings to show which place's details are visible
-        document.getElementById('boys-heading').textContent = `Boys Details for ${place}`;
-        document.getElementById('captains-heading').textContent = `Captains Details for ${place}`;
-
-        // Get all cards in the boys and captains sections
-        const boysCards = document.querySelectorAll('#boys-container .card');
-        const captainsCards = document.querySelectorAll('#captains-container .card');
-
-        // Hide all cards first
-        boysCards.forEach(card => card.classList.remove('visible'));
-        captainsCards.forEach(card => card.classList.remove('visible'));
-
-        // Show boys details section
-        const boysSection = document.getElementById('boys-details');
-        boysSection.classList.add('visible');
-
-        // Show captains details section
-        const captainsSection = document.getElementById('captains-details');
-        captainsSection.classList.add('visible');
-
-        // Filter and show only the relevant cards based on the place
-        boysCards.forEach(card => {
-            if (card.getAttribute('data-place') === place) {
-                card.classList.add('visible');
-            }
-        });
-
-        captainsCards.forEach(card => {
-            if (card.getAttribute('data-place') === place) {
-                card.classList.add('visible');
-            }
-        });
-
-        // Scroll to the revealed sections for better user experience
-        setTimeout(() => {
-            document.getElementById('boys-details').scrollIntoView({ behavior: 'smooth' });
-        }, 600);
-          
-        // New code to center the clicked card on desktop
-        if (window.innerWidth > 768) {
-            clickedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-
-    // Function to reset the view to the initial state
-    function resetAll() {
-        // Show all work cards
-        const allWorkCards = document.querySelectorAll('.work-card');
-        allWorkCards.forEach(card => {
-            card.classList.remove('hidden-card');
-            card.classList.add('visible');
-        });
-
-        // Hide boys and captains sections
-        document.getElementById('boys-details').classList.remove('visible');
-        document.getElementById('captains-details').classList.remove('visible');
-
-        // Hide the back button
-        document.getElementById('back-button-section').style.display = 'none';
-
-        // Scroll back to the top of the work details section
-        setTimeout(() => {
-            document.getElementById('work-details').scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-    }
-
-    // New JavaScript to handle the form submission and send email via mailto
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const details = document.getElementById('details').value;
-
-        // Create the email subject and body
-        const subject = `New Booking Request from ${name}`;
-        const body = `Name: ${name}\nPhone: ${phone}\n\nEvent Details:\n${details}`;
-
-        // Create the mailto link
-        const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        // Open the user's default email client
-        window.location.href = mailtoLink;
+  // Animate cards when visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+  // Booking form
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const details = document.getElementById('details').value;
+    const subject = `New Booking Request from ${name}`;
+    const body = `Name: ${name}\nPhone: ${phone}\n\nEvent Details:\n${details}`;
+    const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
+
+  // Registration form
+  document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('reg-name').value;
+    const phone = document.getElementById('reg-phone').value;
+    const dob = document.getElementById('reg-dob').value;
+    const city = document.getElementById('reg-city').value;
+    const experience = document.getElementById('reg-experience').value;
+    const subject = `NEW Staff Registration: ${name} (${city})`;
+    const body = `Applicant Name: ${name}\nPhone: ${phone}\nDate of Birth: ${dob}\nCity/District: ${city}\n\nExperience & Role:\n${experience}`;
+    const mailtoLink = `mailto:hostcateringevents@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
 </script>
 </body>
 </html>
-
