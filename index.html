@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">                                
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://hostcateringevents.github.io/icons/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="https://hostcateringevents.github.io/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://hostcateringevents.github.io/icons/favicon-16x16.png">
@@ -613,7 +613,7 @@
         // Optionally, you might want to alert the user here too, but the original did not.
     });
 
-    // Staff Registration Form: NOW Sends email via mailto instead of showing an alert
+    // Staff Registration Form: NOW Sends email via mailto and removes the alert
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -645,10 +645,9 @@ Home City/Place: ${place}
         // Open the user's default email client
         window.location.href = mailtoLink;
 
-        // Inform the user and reset the form
-        alert(`Registration email prepared! Please click 'Send' in your email application to complete the process for ${name}.`);
+        // Reset the form (Alert has been removed)
         this.reset();
     });
 </script>
 </body>
-</html>
+                                                   </html>
