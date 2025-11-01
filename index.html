@@ -242,35 +242,75 @@
         form {
             padding: 15px;
         }
+        /* Mobile adjustment for footer */
+        .social-icons a {
+             display: block;
+             margin: 10px auto;
+        }
     }
 
-      /* Footer */
+    /* --- Footer Styles (New Style) --- */
     footer {
         background-color: #002046;
         color: #fff;
-        text-align: center;
-        padding: 15px 5px;
+        padding: 25px 20px; /* Increased padding */
         margin-top: 40px;
+        text-align: center; /* Center everything within the footer */
     }
+    
+    /* Horizontal Rule */
+    footer hr {
+        border: 0;
+        height: 1px;
+        background: #ffcc00; /* Use accent color for the separator */
+        margin: 10px auto 20px auto;
+        width: 80%;
+        max-width: 400px;
+    }
+
     footer p {
-        font-family: Oswald;
-        margin: 8px 0;
+        font-family: Arial, sans-serif;
+        margin: 5px 0;
         font-size: 14px;
     }
+
+    /* Social Icons Container Styling */
     .social-icons {
-        margin-top: 10px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center; /* Center the icons horizontally */
+        gap: 25px; /* Spacing between icons */
+        flex-wrap: wrap; /* Allow wrapping on small screens */
     }
+
+    /* Social Icon Links Styling */
     .social-icons a {
-        margin: 0 10px;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         color: #fff;
-        font-size: 18px;
+        font-size: 16px; /* Slightly larger text */
         transition: color 0.3s;
         text-decoration: none;
+        font-weight: bold;
     }
+
+    /* Social Icon (Font Awesome) Styling */
+    .social-icons a i {
+        font-size: 24px; /* Larger icons */
+        margin-right: 8px;
+        color: #ffcc00; /* Use accent color for the icons */
+        transition: color 0.3s, transform 0.3s;
+    }
+    
+    /* Hover Effect */
     .social-icons a:hover {
         color: #ffcc00;
     }
+    .social-icons a:hover i {
+        color: #e6b800; /* Slightly darker gold on hover */
+        transform: scale(1.1);
+    }
+
 
 </style>
 </head>
@@ -388,9 +428,12 @@
 
     <footer>
         <div class="social-icons">
-            <a href="https://chat.whatsapp.com/BU7Sky5DVz8HminNybUboN" target="_blank"><i class="fab fa-whatsapp"></i> join whatsapp</a>
+            <a href="https://www.instagram.com/hostcateringevent/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://chat.whatsapp.com/BU7Sky5DVz8HminNybUboN" target="_blank"><i class="fab fa-whatsapp"></i> Join WhatsApp</a>
         </div>
-        <p><strong>© 2025 Host Catering Events.<br>All Rights Reserved.</strong></p>
+        <hr>
+        <p><strong>© 2025 Host Catering Events.</strong></p>
+        <p>All Rights Reserved.</p>
     </footer>
 
     <div id="hidden-staff-data" style="display:none;">
